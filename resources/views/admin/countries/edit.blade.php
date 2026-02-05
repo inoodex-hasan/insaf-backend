@@ -1,0 +1,52 @@
+@extends('admin.layouts.master')
+
+@section('title', 'Edit Country')
+
+@section('content')
+    <div class="flex flex-wrap items-center justify-between gap-4">
+        <h2 class="text-xl font-semibold uppercase">Edit Country</h2>
+        <a href="{{ route('admin.countries.index') }}" class="btn btn-secondary gap-2">
+            Back to List
+        </a>
+    </div>
+
+    <div class="panel mt-6">
+        <form action="{{ route('admin.countries.update', $country->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+
+            <div class="grid grid-cols-1 gap-5 md:grid-cols-2">
+
+                <div class="form-group">
+                    <label>Name <span class="text-danger">*</span></label>
+                    <input type="text" name="name" class="form-input" value="{{ old('name', $country->name) }}"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label>Code</label>
+                    <input type="text" name="code" class="form-input" value="{{ old('code', $country->code) }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Currency</label>
+                    <input type="text" name="currency" class="form-input"
+                        value="{{ old('currency', $country->currency) }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Status</label>
+                    <select name="status" class="form-select">
+                        <option value="1" {{ $country->status ? 'selected' : '' }}>Active</option>
+                        <option value="0" {{ !$country->status ? 'selected' : '' }}>Inactive</option>
+                    </select>
+                </div>
+
+            </div>
+
+            <div class="mt-8 flex items-center gap-4">
+                <button type="submit" class="btn btn-primary px-10">Update Country</button>
+            </div>
+        </form>
+    </div>
+@endsection

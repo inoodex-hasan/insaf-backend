@@ -1,0 +1,103 @@
+<?php
+
+namespace App\Http\Controllers\Admin;
+
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\{Country, University};
+
+class UniversityController extends Controller
+{
+    public function __construct()
+    {
+        $this->middleware('can:view-universities')->only(['index']);
+        $this->middleware('can:create-university')->only(['create', 'store']);
+        $this->middleware('can:update-university')->only(['edit', 'update']);
+        $this->middleware('can:delete-university')->only(['destroy']);
+    }
+
+    public function index(Request $request)
+    {
+        $this->authorize('view-universities');
+
+        $query = University::with('country');
+
+        if ($search = $request->get('search')) {
+            $query->where('name', 'like', "%{$search}%");
+        }
+
+        $universities = $query->latest()->paginate(15)->withQueryString();
+
+        return view('admin.universities.index', compact('universities'));
+    }
+
+    public function create()
+    {
+        $this->authorize('create-university');
+
+        $countries = Country::where('status', 1)->orderBy('name')->get();
+
+        return view('admin.universities.create', compact('countries'));
+    }
+
+    public function store(Request $request)
+    {
+        $this->authorize('create-university');
+
+        $validated = $this->validateUniversity($request);
+
+        University::create($validated);
+
+        return redirect()
+            ->route('admin.universities.index')
+            ->with('success', 'University created successfully.');
+    }
+
+    public function edit(University $university)
+    {
+        $this->authorize('update-university');
+
+        $countries = Country::where('status', 1)->orderBy('name')->get();
+
+        return view('admin.universities.edit', compact('university', 'countries'));
+    }
+
+    public function update(Request $request, University $university)
+    {
+        $this->authorize('update-university');
+
+        $validated = $this->validateUniversity($request);
+
+        $university->update($validated);
+
+        return redirect()
+            ->route('admin.universities.index')
+            ->with('success', 'University updated successfully.');
+    }
+
+    public function destroy(University $university)
+    {
+        $this->authorize('delete-university');
+
+        $university->delete();
+
+        return redirect()
+            ->route('admin.universities.index')
+            ->with('success', 'University deleted successfully.');
+    }
+
+    private function validateUniversity(Request $request): array
+    {
+        return $request->validate([
+            'country_id' => ['required', 'exists:countries,id'],
+            'name' => ['required', 'string', 'max:255'],
+            'short_name' => ['nullable', 'string', 'max:255'],
+            'website' => ['nullable', 'url'],
+            'email' => ['nullable', 'email'],
+            'phone' => ['nullable', 'string', 'max:50'],
+            'address' => ['nullable', 'string'],
+            'status' => ['required', 'boolean'],
+        ]);
+    }
+}
+
