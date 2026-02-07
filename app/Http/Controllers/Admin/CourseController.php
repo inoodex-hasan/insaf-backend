@@ -10,15 +10,12 @@ class CourseController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:view-courses')->only(['index']);
-        $this->middleware('can:create-course')->only(['create', 'store']);
-        $this->middleware('can:update-course')->only(['edit', 'update']);
-        $this->middleware('can:delete-course')->only(['destroy']);
+        $this->middleware('can:edit-data');
     }
 
     public function index(Request $request)
     {
-        $this->authorize('view-courses');
+        $this->authorize('edit-data');
 
         $query = Course::with('university');
 
@@ -33,7 +30,7 @@ class CourseController extends Controller
 
     public function create()
     {
-        $this->authorize('create-course');
+        $this->authorize('edit-data');
 
         $universities = University::where('status', 1)->orderBy('name')->get();
 
@@ -42,7 +39,7 @@ class CourseController extends Controller
 
     public function store(Request $request)
     {
-        $this->authorize('create-course');
+        $this->authorize('edit-data');
 
         $validated = $this->validateCourse($request);
 
@@ -55,7 +52,7 @@ class CourseController extends Controller
 
     public function edit(Course $course)
     {
-        $this->authorize('update-course');
+        $this->authorize('edit-data');
 
         $universities = University::where('status', 1)->orderBy('name')->get();
 
@@ -64,7 +61,7 @@ class CourseController extends Controller
 
     public function update(Request $request, Course $course)
     {
-        $this->authorize('update-course');
+        $this->authorize('edit-data');
 
         $validated = $this->validateCourse($request);
 
@@ -77,7 +74,7 @@ class CourseController extends Controller
 
     public function destroy(Course $course)
     {
-        $this->authorize('delete-course');
+        $this->authorize('edit-data');
 
         $course->delete();
 
@@ -94,7 +91,6 @@ class CourseController extends Controller
             'degree_level' => ['nullable', 'string', 'max:100'],
             'duration' => ['nullable', 'string', 'max:100'],
             'tuition_fee' => ['nullable', 'numeric'],
-            'intake' => ['nullable', 'string', 'max:100'],
             'status' => ['required', 'boolean'],
         ]);
     }

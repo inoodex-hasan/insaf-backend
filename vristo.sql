@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Feb 05, 2026 at 01:24 PM
+-- Generation Time: Feb 07, 2026 at 01:27 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.26
 
@@ -38,9 +38,13 @@ CREATE TABLE `cache` (
 --
 
 INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
-('admin-dashboard-cache-tyro:user:1:roles', 'a:1:{i:0;s:11:\"super-admin\";}', 1770298072),
-('admin-dashboard-cache-tyro:user:4:privileges', 'a:4:{i:0;s:14:\"create-student\";i:1;s:13:\"view-students\";i:2;s:14:\"update-student\";i:3;s:14:\"delete-student\";}', 1770291766),
-('admin-dashboard-cache-tyro:user:4:roles', 'a:1:{i:0;s:10:\"consultant\";}', 1770291766);
+('admin-dashboard-cache-tyro:user:1:roles', 'a:1:{i:0;s:11:\"super-admin\";}', 1770468471),
+('admin-dashboard-cache-tyro:user:3:privileges', 'a:3:{i:0;s:11:\"create-lead\";i:1;s:10:\"view-leads\";i:2;s:11:\"update-lead\";}', 1770298699),
+('admin-dashboard-cache-tyro:user:3:roles', 'a:1:{i:0;s:9:\"marketing\";}', 1770298699),
+('admin-dashboard-cache-tyro:user:4:privileges', 'a:4:{i:0;s:14:\"create-student\";i:1;s:13:\"view-students\";i:2;s:14:\"update-student\";i:3;s:14:\"delete-student\";}', 1770298754),
+('admin-dashboard-cache-tyro:user:4:roles', 'a:1:{i:0;s:10:\"consultant\";}', 1770298754),
+('admin-dashboard-cache-tyro:user:6:privileges', 'a:1:{i:0;s:9:\"edit-data\";}', 1770471085),
+('admin-dashboard-cache-tyro:user:6:roles', 'a:1:{i:0;s:6:\"editor\";}', 1770471085);
 
 -- --------------------------------------------------------
 
@@ -70,6 +74,13 @@ CREATE TABLE `countries` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `countries`
+--
+
+INSERT INTO `countries` (`id`, `name`, `code`, `currency`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'UK', NULL, NULL, 1, '2026-02-07 07:14:41', '2026-02-07 07:17:06');
+
 -- --------------------------------------------------------
 
 --
@@ -83,11 +94,42 @@ CREATE TABLE `courses` (
   `degree_level` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `duration` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `tuition_fee` decimal(12,2) DEFAULT NULL,
-  `intake` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `status` tinyint(1) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `courses`
+--
+
+INSERT INTO `courses` (`id`, `university_id`, `name`, `degree_level`, `duration`, `tuition_fee`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'MBA', 'IELTS', '1 year', 1000.00, 1, '2026-02-07 07:22:57', '2026-02-07 07:27:01');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `course_intakes`
+--
+
+CREATE TABLE `course_intakes` (
+  `id` bigint UNSIGNED NOT NULL,
+  `course_id` bigint UNSIGNED NOT NULL,
+  `intake_name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `application_start_date` date DEFAULT NULL,
+  `application_deadline` date DEFAULT NULL,
+  `class_start_date` date DEFAULT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT '1',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `course_intakes`
+--
+
+INSERT INTO `course_intakes` (`id`, `course_id`, `intake_name`, `application_start_date`, `application_deadline`, `class_start_date`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Summer 2026', '2026-10-01', '2026-10-02', NULL, 1, '2026-02-07 07:24:52', '2026-02-07 07:24:52');
 
 -- --------------------------------------------------------
 
@@ -207,7 +249,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2026_02_03_133591_create_payments_table', 8),
 (17, '2026_02_05_134117_create_countries_table', 8),
 (18, '2026_02_05_134343_create_universities_table', 8),
-(19, '2026_02_05_134510_create_courses_table', 8);
+(19, '2026_02_05_134510_create_courses_table', 8),
+(20, '2026_02_07_120449_create_course_intakes_table', 9);
 
 -- --------------------------------------------------------
 
@@ -289,7 +332,8 @@ INSERT INTO `privileges` (`id`, `name`, `slug`, `description`, `created_at`, `up
 (16, 'Create Student', 'create-student', NULL, '2026-02-05 05:19:09', '2026-02-05 05:19:09'),
 (17, 'View Students', 'view-students', NULL, '2026-02-05 05:19:28', '2026-02-05 05:19:28'),
 (18, 'Update Student', 'update-student', NULL, '2026-02-05 05:19:46', '2026-02-05 05:19:46'),
-(19, 'Delete Student', 'delete-student', NULL, '2026-02-05 05:20:16', '2026-02-05 05:20:16');
+(19, 'Delete Student', 'delete-student', NULL, '2026-02-05 05:20:16', '2026-02-05 05:20:16'),
+(20, 'Edit Data', 'edit-data', 'Add/Edit/Update/Delete Data', '2026-02-07 06:41:34', '2026-02-07 06:43:03');
 
 -- --------------------------------------------------------
 
@@ -319,7 +363,8 @@ INSERT INTO `privilege_role` (`id`, `role_id`, `privilege_id`, `created_at`, `up
 (22, 7, 16, '2026-02-05 05:19:09', '2026-02-05 05:19:09'),
 (23, 7, 17, '2026-02-05 05:19:28', '2026-02-05 05:19:28'),
 (24, 7, 18, '2026-02-05 05:20:01', '2026-02-05 05:20:01'),
-(25, 7, 19, '2026-02-05 05:20:16', '2026-02-05 05:20:16');
+(25, 7, 19, '2026-02-05 05:20:16', '2026-02-05 05:20:16'),
+(26, 13, 20, '2026-02-07 06:41:49', '2026-02-07 06:41:49');
 
 -- --------------------------------------------------------
 
@@ -346,7 +391,8 @@ INSERT INTO `roles` (`id`, `name`, `slug`, `is_active`, `created_at`, `updated_a
 (6, 'Super Admin', 'super-admin', 1, '2026-02-02 02:55:25', '2026-02-02 02:55:25'),
 (7, 'Consultant', 'consultant', 1, '2026-02-03 04:47:28', '2026-02-03 04:47:28'),
 (8, 'Application', 'application', 1, '2026-02-03 04:47:43', '2026-02-03 04:47:43'),
-(9, 'User', 'user', 1, '2026-02-04 22:45:34', '2026-02-04 22:45:34');
+(9, 'User', 'user', 1, '2026-02-04 22:45:34', '2026-02-04 22:45:34'),
+(13, 'Editor', 'editor', 1, '2026-02-07 06:39:44', '2026-02-07 06:39:44');
 
 -- --------------------------------------------------------
 
@@ -368,7 +414,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('eYXrK0FTyLgbgCZUnkxOrizRglVRHDIWN84icWVr', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiaGFNM1hJY1h5bnpxNVVjTTF2ZmFVOU00RUEyUU5XTDhDUVl6WkMwMCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxMDoidHlyby1sb2dpbiI7YToxOntzOjc6ImNhcHRjaGEiO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czozOToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2Rhc2hib2FyZC9jb3Vyc2VzIjtzOjU6InJvdXRlIjtzOjE5OiJhZG1pbi5jb3Vyc2VzLmluZGV4Ijt9czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTt9', 1770297825);
+('zQ0WFF6fE8HZt9wwlN9yaPTNKGSEBP0ZFRETkA4D', 6, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:147.0) Gecko/20100101 Firefox/147.0', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoid21NcTU1bGxMOXgzRHl0WENGdUNCYm8ySUxWc1NZclFRZjR4dHZNTyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxMDoidHlyby1sb2dpbiI7YToxOntzOjc6ImNhcHRjaGEiO2E6MDp7fX1zOjk6Il9wcmV2aW91cyI7YToyOntzOjM6InVybCI7czozMToiaHR0cDovLzEyNy4wLjAuMTo4MDAwL2Rhc2hib2FyZCI7czo1OiJyb3V0ZSI7czoyMDoidHlyby1kYXNoYm9hcmQuaW5kZXgiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo2O30=', 1770470836);
 
 -- --------------------------------------------------------
 
@@ -437,6 +483,13 @@ CREATE TABLE `universities` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `universities`
+--
+
+INSERT INTO `universities` (`id`, `country_id`, `name`, `short_name`, `website`, `email`, `phone`, `address`, `status`, `created_at`, `updated_at`) VALUES
+(1, 1, 'ABC University', 'abc', 'http://abc.com', 'abc@example.com', '01236547890', 'uk', 1, '2026-02-07 07:18:21', '2026-02-07 07:20:55');
+
 -- --------------------------------------------------------
 
 --
@@ -463,7 +516,8 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `suspended_at`, `suspension_reason`) VALUES
 (1, 'Inoodex', 'hello@inoodex.com', NULL, '$2y$12$iipzZ9gzlG/JW.L051o/7u6NkYHGx/tR9gsnE2S5ZEH38gDxzaOiK', NULL, '2026-02-02 02:56:33', '2026-02-02 04:25:24', NULL, NULL),
 (3, 'Marketing Team 1', 'marketing@example.com', NULL, '$2y$12$KmKRAF02q/aKZhMN4rRjRegcQa.hvBIcX5UnFNgFxc3xTjMKuustS', NULL, '2026-02-03 04:48:46', '2026-02-03 04:48:46', NULL, NULL),
-(4, 'Consultant', 'consultant@example.com', NULL, '$2y$12$YsW/ubYLXokv.z.2ZfXfF.Nwc86MmiYkJ1QpokJzKIZTap15oWkuG', NULL, '2026-02-03 05:58:33', '2026-02-03 05:58:33', NULL, NULL);
+(4, 'Consultant', 'consultant@example.com', NULL, '$2y$12$YsW/ubYLXokv.z.2ZfXfF.Nwc86MmiYkJ1QpokJzKIZTap15oWkuG', NULL, '2026-02-03 05:58:33', '2026-02-03 05:58:33', NULL, NULL),
+(6, 'Editor 1', 'editor@example.com', NULL, '$2y$12$E9XhxQJUzecY1I.tawQ6suh5XJCNeRLA3TMX/x2CoMjakcXeVv5tW', NULL, '2026-02-07 06:42:20', '2026-02-07 06:42:20', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -486,7 +540,8 @@ CREATE TABLE `user_roles` (
 INSERT INTO `user_roles` (`id`, `user_id`, `role_id`, `created_at`, `updated_at`) VALUES
 (2, 1, 6, '2026-02-02 04:25:25', '2026-02-02 04:25:25'),
 (4, 3, 2, '2026-02-03 04:48:46', '2026-02-03 04:48:46'),
-(5, 4, 7, '2026-02-03 05:58:33', '2026-02-03 05:58:33');
+(5, 4, 7, '2026-02-03 05:58:33', '2026-02-03 05:58:33'),
+(7, 6, 13, '2026-02-07 06:42:20', '2026-02-07 06:42:20');
 
 --
 -- Indexes for dumped tables
@@ -518,6 +573,13 @@ ALTER TABLE `countries`
 ALTER TABLE `courses`
   ADD PRIMARY KEY (`id`),
   ADD KEY `courses_university_id_foreign` (`university_id`);
+
+--
+-- Indexes for table `course_intakes`
+--
+ALTER TABLE `course_intakes`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `course_intakes_course_id_foreign` (`course_id`);
 
 --
 -- Indexes for table `failed_jobs`
@@ -653,13 +715,19 @@ ALTER TABLE `user_roles`
 -- AUTO_INCREMENT for table `countries`
 --
 ALTER TABLE `countries`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `courses`
 --
 ALTER TABLE `courses`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `course_intakes`
+--
+ALTER TABLE `course_intakes`
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `failed_jobs`
@@ -683,7 +751,7 @@ ALTER TABLE `leads`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `payments`
@@ -701,19 +769,19 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT for table `privileges`
 --
 ALTER TABLE `privileges`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `privilege_role`
 --
 ALTER TABLE `privilege_role`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `settings`
@@ -731,19 +799,19 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `universities`
 --
 ALTER TABLE `universities`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user_roles`
 --
 ALTER TABLE `user_roles`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
@@ -754,6 +822,12 @@ ALTER TABLE `user_roles`
 --
 ALTER TABLE `courses`
   ADD CONSTRAINT `courses_university_id_foreign` FOREIGN KEY (`university_id`) REFERENCES `universities` (`id`) ON DELETE CASCADE;
+
+--
+-- Constraints for table `course_intakes`
+--
+ALTER TABLE `course_intakes`
+  ADD CONSTRAINT `course_intakes_course_id_foreign` FOREIGN KEY (`course_id`) REFERENCES `courses` (`id`) ON DELETE CASCADE;
 
 --
 -- Constraints for table `leads`

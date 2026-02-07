@@ -19,8 +19,7 @@
                     <select name="country_id" class="form-select" required>
                         <option value="">Select Country</option>
                         @foreach ($countries as $country)
-                            <option value="{{ $country->id }}"
-                                {{ old('country_id', $university->country_id) == $country->id ? 'selected' : '' }}>
+                            <option value="{{ $country->id }}" {{ old('country_id', $university->country_id) == $country->id ? 'selected' : '' }}>
                                 {{ $country->name }}
                             </option>
                         @endforeach
@@ -29,12 +28,11 @@
 
                 <div class="form-group">
                     <label>Name <span class="text-danger">*</span></label>
-                    <input type="text" name="name" class="form-input" value="{{ old('name', $university->name) }}"
-                        required>
+                    <input type="text" name="name" class="form-input" value="{{ old('name', $university->name) }}" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Short Name</label>
+                    <label>Short Name (Optional)</label>
                     <input type="text" name="short_name" class="form-input"
                         value="{{ old('short_name', $university->short_name) }}">
                 </div>
@@ -46,8 +44,7 @@
 
                 <div class="form-group">
                     <label>Website</label>
-                    <input type="url" name="website" class="form-input"
-                        value="{{ old('website', $university->website) }}">
+                    <input type="url" name="website" class="form-input" value="{{ old('website', $university->website) }}">
                 </div>
 
                 <div class="form-group">

@@ -10,21 +10,18 @@ class CountryController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:view-countries')->only(['index']);
-        $this->middleware('can:create-country')->only(['create', 'store']);
-        $this->middleware('can:update-country')->only(['edit', 'update']);
-        $this->middleware('can:delete-country')->only(['destroy']);
+        $this->middleware('can:edit-data');
     }
 
     public function index(Request $request)
     {
-        $this->authorize('view-countries');
+        $this->authorize('edit-data');
 
         $query = Country::query();
 
         if ($search = $request->get('search')) {
             $query->where('name', 'like', "%{$search}%")
-                  ->orWhere('code', 'like', "%{$search}%");
+                ->orWhere('code', 'like', "%{$search}%");
         }
 
         $countries = $query->latest()->paginate(15)->withQueryString();
@@ -34,14 +31,14 @@ class CountryController extends Controller
 
     public function create()
     {
-        $this->authorize('create-country');
+        $this->authorize('edit-data');
 
         return view('admin.countries.create');
     }
 
     public function store(Request $request)
     {
-        $this->authorize('create-country');
+        $this->authorize('edit-data');
 
         $validated = $this->validateCountry($request);
 
@@ -54,14 +51,14 @@ class CountryController extends Controller
 
     public function edit(Country $country)
     {
-        $this->authorize('update-country');
+        $this->authorize('edit-data');
 
         return view('admin.countries.edit', compact('country'));
     }
 
     public function update(Request $request, Country $country)
     {
-        $this->authorize('update-country');
+        $this->authorize('edit-data');
 
         $validated = $this->validateCountry($request);
 
@@ -74,7 +71,7 @@ class CountryController extends Controller
 
     public function destroy(Country $country)
     {
-        $this->authorize('delete-country');
+        $this->authorize('edit-data');
 
         $country->delete();
 

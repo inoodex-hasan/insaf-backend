@@ -1,3 +1,14 @@
+<style>
+    .horizontal-menu .nav-item .sub-menu::before {
+        content: '';
+        position: absolute;
+        top: -20px;
+        left: 0;
+        right: 0;
+        height: 20px;
+        display: block;
+    }
+</style>
 <ul class="horizontal-menu border-t border-[#ebedf2] bg-white px-6 py-1.5 font-semibold text-black rtl:space-x-reverse dark:border-[#191e3a] dark:bg-[#0e1726] dark:text-white-dark lg:space-x-1.5 xl:space-x-8"
     x-show="$store.app.menu === 'horizontal'">
     <!-- Dashboard -->
@@ -18,124 +29,137 @@
         </a>
     </li>
 
-    @if (auth()->check() && auth()->user()->hasRole(role: 'super-admin'))
-        <li class="nav-item">
+    @if (auth()->check() && (auth()->user()->hasRole('super-admin') || auth()->user()->hasRole('editor')))
+        <li class="menu nav-item relative">
+
+            {{-- Parent Menu --}}
             <a href="javascript:;" class="nav-link flex items-center justify-between w-full">
                 <div class="flex items-center">
-                    <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path opacity="0.5"
-                            d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M12 8V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M12 16H12.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
+                    <!-- Editor Icon -->
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="shrink-0">
+                        <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25z" stroke="currentColor" stroke-width="1.5"
+                            fill="none" />
+                        <path d="M14.06 4.94l3.75 3.75" stroke="currentColor" stroke-width="1.5" />
                     </svg>
-                    <span
-                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Countries</span>
+
+                    <span class="px-2">Editor</span>
                 </div>
+
                 <div class="right_arrow">
-                    <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
+                    <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24" fill="none">
                         <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </div>
             </a>
+
+            {{-- Child Menu --}}
             <ul class="sub-menu">
-                @can('create-country')
-                    <li><a href="{{ route('admin.countries.create') }}">Add Country</a></li>
-                @endcan
-                @can('view-countries')
-                    <li><a href="{{ route('admin.countries.index') }}">Country List</a></li>
-                @endcan
+
+                {{-- Countries --}}
+                <li class="menu nav-item relative group">
+                    <a href="javascript:;" class="flex justify-between items-center w-full">
+                        Countries
+                        <svg class="h-3 w-3 rotate-90" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                    {{-- Flyout submenu --}}
+                    <ul
+                        class="child-menu absolute ltr:left-full rtl:right-full top-0 ml-1 hidden min-w-[180px] bg-white shadow-lg rounded-md z-50 group-hover:block">
+                        @can('edit-data')
+                            <li><a href="{{ route('admin.countries.create') }}" class="block px-4 py-2 hover:bg-gray-100">Add
+                                    Country</a></li>
+                            <li><a href="{{ route('admin.countries.index') }}" class="block px-4 py-2 hover:bg-gray-100">Country
+                                    List</a></li>
+                        @endcan
+                    </ul>
+                </li>
+
+                {{-- Universities --}}
+                <li class="menu nav-item relative group">
+                    <a href="javascript:;" class="flex justify-between items-center w-full">
+                        Universities
+                        <svg class="h-3 w-3 rotate-90" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                    {{-- Flyout submenu --}}
+                    <ul
+                        class="child-menu absolute ltr:left-full rtl:right-full top-0 ml-1 hidden min-w-[180px] bg-white shadow-lg rounded-md z-50 group-hover:block">
+                        @can('edit-data')
+                            <li><a href="{{ route('admin.universities.create') }}" class="block px-4 py-2 hover:bg-gray-100">Add
+                                    University</a></li>
+                            <li><a href="{{ route('admin.universities.index') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100">University
+                                    List</a></li>
+                        @endcan
+                    </ul>
+                </li>
+
+                {{-- Courses --}}
+                <li class="menu nav-item relative group">
+                    <a href="javascript:;" class="flex justify-between items-center w-full">
+                        Courses
+                        <svg class="h-3 w-3 rotate-90" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                    {{-- Flyout submenu --}}
+                    <ul
+                        class="child-menu absolute ltr:left-full rtl:right-full top-0 ml-1 hidden min-w-[180px] bg-white shadow-lg rounded-md z-50 group-hover:block">
+                        @can('edit-data')
+                            <li><a href="{{ route('admin.courses.create') }}" class="block px-4 py-2 hover:bg-gray-100">Add
+                                    Course</a></li>
+                            <li><a href="{{ route('admin.courses.index') }}" class="block px-4 py-2 hover:bg-gray-100">Course
+                                    List</a></li>
+                        @endcan
+                    </ul>
+                </li>
+
+                {{-- Course Intake --}}
+                <li class="menu nav-item relative group">
+                    <a href="javascript:;" class="flex justify-between items-center w-full">
+                        Course Intake
+                        <svg class="h-3 w-3 rotate-90" viewBox="0 0 24 24" fill="none">
+                            <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+
+                    {{-- Flyout submenu --}}
+                    <ul
+                        class="child-menu absolute ltr:left-full rtl:right-full top-0 ml-1 hidden min-w-[180px] bg-white shadow-lg rounded-md z-50 group-hover:block">
+                        @can('edit-data')
+                            <li><a href="{{ route('admin.course-intakes.create') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100">Add
+                                    Course Intake</a></li>
+                            <li><a href="{{ route('admin.course-intakes.index') }}"
+                                    class="block px-4 py-2 hover:bg-gray-100">Course
+                                    Intake List</a></li>
+                        @endcan
+                    </ul>
+                </li>
+
             </ul>
         </li>
     @endif
 
-    @if (auth()->check() && auth()->user()->hasRole(role: 'super-admin'))
-        <li class="nav-item">
-            <a href="javascript:;" class="nav-link flex items-center justify-between w-full">
-
-                <div class="flex items-center">
-                    <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path opacity="0.5"
-                            d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                        <path d="M12 8V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M12 16H12.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    <span
-                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Universities</span>
-                </div>
-                <div class="right_arrow">
-                    <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </div>
-            </a>
-            <ul class="sub-menu">
-                @can('create-country')
-                    <li><a href="{{ route('admin.universities.create') }}">Add University</a></li>
-                @endcan
-                @can('view-universities')
-                    <li><a href="{{ route('admin.universities.index') }}">University List</a></li>
-                @endcan
-            </ul>
-        </li>
-    @endif
-
-    @if (auth()->check() && auth()->user()->hasRole(role: 'super-admin'))
-        <li class="nav-item">
-            <a href="javascript:;" class="nav-link flex items-center justify-between w-full">
-
-                <div class="flex items-center">
-                    <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
-                        fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path opacity="0.5"
-                            d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
-                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M12 8V12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                        <path d="M12 16H12.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                    <span
-                        class="text-black ltr:pl-3 rtl:pr-3 dark:text-[#506690] dark:group-hover:text-white-dark">Courses</span>
-                </div>
-                <div class="right_arrow">
-                    <svg class="h-4 w-4 rotate-90" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path d="M9 5L15 12L9 19" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </div>
-            </a>
-            <ul class="sub-menu">
-                @can('create-course')
-                    <li><a href="{{ route('admin.courses.create') }}">Add Course</a></li>
-                @endcan
-                @can('view-courses')
-                    <li><a href="{{ route('admin.courses.index') }}">Course List</a></li>
-                @endcan
-            </ul>
-        </li>
-    @endif
 
     <!-- Administration -->
     @if (auth()->check() && auth()->user()->hasRole('super-admin'))
         <li class="menu nav-item relative">
             <a href="javascript:;" class="nav-link">
                 <div class="flex items-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="shrink-0">
                         <path opacity="0.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z" fill="currentColor" />
                         <path fill-rule="evenodd" clip-rule="evenodd"
                             d="M18.121 17.659c.032.085.097.158.18.194l.003.002c.198.088.435-.004.529-.204.03-.065.062-.132.094-.197.105-.209.346-.312.569-.245.068.02.137.04.205.063.228.077.375.31.344.548-.009.071-.02.144-.032.215-.04.241.104.475.34.55a4.342 4.342 0 01.705.315c.218.122.316.395.231.624l-.025.07c-.085.23-.339.351-.568.27-.07-.024-.138-.05-.208-.072-.225-.073-.473.023-.585.228-.035.064-.07.13-.108.194-.123.212-.046.48.167.603.064.037.129.071.193.109.215.126.31.398.225.626-.145.394-.33.766-.554 1.111-.137.211-.407.284-.63.17l-.066-.034c-.218-.11-.49-.057-.643.125-.047.056-.093.113-.143.167-.163.178-.186.446-.057.653l.044.07c.143.232.083.535-.135.698a4.33 4.33 0 01-.84.484c-.233.1-.515-.004-.634-.233l-.037-.073c-.116-.226-.395-.316-.624-.213l-.208.094c-.22.1-.336.353-.274.587l.02.075c.063.242-.083.491-.324.557a4.343 4.343 0 01-.767.121c-.25.016-.474-.165-.52-.413l-.014-.076c-.042-.243-.278-.403-.523-.357l-.226.042c-.244.045-.42.274-.393.52l.008.077c.026.252-.15.484-.403.534a4.343 4.343 0 01-.775-.028c-.25-.034-.43-.257-.406-.508l.006-.077c.022-.247-.14-.475-.386-.54l-.22-.058c-.24-.065-.487.058-.584.29l-.022.054c-.114.283-.43.415-.705.298a4.333 4.333 0 01-.803-.45c-.244-.176-.328-.496-.188-.74l.03-.053c.125-.231.066-.52-.138-.684l-.167-.134c-.201-.161-.26-.445-.143-.675l.035-.069c.127-.249.034-.559-.21-.692a4.34 4.34 0 01-.697-.478c-.218-.184-.257-.5-.091-.73l.047-.066c.15-.21-.082-.52-.279-.652l-.183-.122c-.217-.145-.295-.436-.183-.67l.034-.07c.112-.236.4-.334.643-.22l.205.097c.228.106.505.01.62-.218l.094-.188c.114-.23.41-.303.626-.145l.056.04c.223.16.544.11.706-.112a4.337 4.337 0 01.32-.387c.189-.2.15-.52-.086-.685l-.066-.046c-.22-.153-.306-.449-.2-.686l.03-.067c.105-.239.387-.354.63-.259l.186.072c.23.09.5-.02.603-.245l.078-.17c.128-.278.44-.383.717-.245a4.33 4.33 0 01.605.353c.22.153.525.101.684-.117l.033-.044c.162-.216.444-.291.683-.133l.03.02z"
@@ -168,8 +192,8 @@
         <li class="menu nav-item relative">
             <a href="javascript:;" class="nav-link">
                 <div class="flex items-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="shrink-0">
                         <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
@@ -199,8 +223,8 @@
         <li class="menu nav-item relative">
             <a href="javascript:;" class="nav-link">
                 <div class="flex items-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="shrink-0">
                         <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
@@ -230,8 +254,8 @@
         <li class="menu nav-item relative">
             <a href="javascript:;" class="nav-link">
                 <div class="flex items-center">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
-                        xmlns="http://www.w3.org/2000/svg" class="shrink-0">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="shrink-0">
                         <path d="M8 6H21M8 12H21M8 18H21M3 6H3.01M3 12H3.01M3 18H3.01" stroke="currentColor"
                             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                     </svg>

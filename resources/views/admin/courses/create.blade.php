@@ -49,11 +49,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Intake</label>
-                    <input type="text" name="intake" class="form-input" value="{{ old('intake') }}">
-                </div>
-
-                <div class="form-group">
                     <label>Status <span class="text-danger">*</span></label>
                     <select name="status" class="form-select" required>
                         <option value="1" {{ old('status', 1) == 1 ? 'selected' : '' }}>Active</option>

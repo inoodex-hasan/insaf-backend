@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Short Name</label>
+                    <label>Short Name (Optional)</label>
                     <input type="text" name="short_name" class="form-input" value="{{ old('short_name') }}">
                 </div>
 

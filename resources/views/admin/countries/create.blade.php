@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Code</label>
+                    <label>Code (Optional)</label>
                     <input type="text" name="code" class="form-input" value="{{ old('code') }}">
                     @error('code')
                         <span class="text-danger text-sm">{{ $message }}</span>
@@ -37,7 +37,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Currency</label>
+                    <label>Currency (Optional)</label>
                     <input type="text" name="currency" class="form-input" value="{{ old('currency') }}">
                     @error('currency')
                         <span class="text-danger text-sm">{{ $message }}</span>

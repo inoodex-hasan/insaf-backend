@@ -53,11 +53,6 @@
                 </div>
 
                 <div class="form-group">
-                    <label>Intake</label>
-                    <input type="text" name="intake" class="form-input" value="{{ old('intake', $course->intake) }}">
-                </div>
-
-                <div class="form-group">
                     <label>Status <span class="text-danger">*</span></label>
                     <select name="status" class="form-select">
                         <option value="1" {{ $course->status ? 'selected' : '' }}>Active</option>

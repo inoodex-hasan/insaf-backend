@@ -53,8 +53,8 @@
                     <!-- Administration -->
                     <h2
                         class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                         <span>Administration</span>
@@ -109,8 +109,7 @@
                                     <div class="flex items-center">
                                         <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
                                             viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path opacity="0.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z"
-                                                fill="currentColor" />
+                                            <path opacity="0.5" d="M12 15a3 3 0 100-6 3 3 0 000 6z" fill="currentColor" />
                                             <path fill-rule="evenodd" clip-rule="evenodd"
                                                 d="M18.121 17.659c.032.085.097.158.18.194l.003.002c.198.088.435-.004.529-.204.03-.065.062-.132.094-.197.105-.209.346-.312.569-.245.068.02.137.04.205.063.228.077.375.31.344.548-.009.071-.02.144-.032.215-.04.241.104.475.34.55a4.342 4.342 0 01.705.315c.218.122.316.395.231.624l-.025.07c-.085.23-.339.351-.568.27-.07-.024-.138-.05-.208-.072-.225-.073-.473.023-.585.228-.035.064-.07.13-.108.194-.123.212-.046.48.167.603.064.037.129.071.193.109.215.126.31.398.225.626-.145.394-.33.766-.554 1.111-.137.211-.407.284-.63.17l-.066-.034c-.218-.11-.49-.057-.643.125-.047.056-.093.113-.143.167-.163.178-.186.446-.057.653l.044.07c.143.232.083.535-.135.698a4.33 4.33 0 01-.84.484c-.233.1-.515-.004-.634-.233l-.037-.073c-.116-.226-.395-.316-.624-.213l-.208.094c-.22.1-.336.353-.274.587l.02.075c.063.242-.083.491-.324.557a4.343 4.343 0 01-.767.121c-.25.016-.474-.165-.52-.413l-.014-.076c-.042-.243-.278-.403-.523-.357l-.226.042c-.244.045-.42.274-.393.52l.008.077c.026.252-.15.484-.403.534a4.343 4.343 0 01-.775-.028c-.25-.034-.43-.257-.406-.508l.006-.077c.022-.247-.14-.475-.386-.54l-.22-.058c-.24-.065-.487.058-.584.29l-.022.054c-.114.283-.43.415-.705.298a4.333 4.333 0 01-.803-.45c-.244-.176-.328-.496-.188-.74l.03-.053c.125-.231.066-.52-.138-.684l-.167-.134c-.201-.161-.26-.445-.143-.675l.035-.069c.127-.249.034-.559-.21-.692a4.34 4.34 0 01-.697-.478c-.218-.184-.257-.5-.091-.73l.047-.066c.15-.21-.082-.52-.279-.652l-.183-.122c-.217-.145-.295-.436-.183-.67l.034-.07c.112-.236.4-.334.643-.22l.205.097c.228.106.505.01.62-.218l.094-.188c.114-.23.41-.303.626-.145l.056.04c.223.16.544.11.706-.112a4.337 4.337 0 01.32-.387c.189-.2.15-.52-.086-.685l-.066-.046c-.22-.153-.306-.449-.2-.686l.03-.067c.105-.239.387-.354.63-.259l.186.072c.23.09.5-.02.603-.245l.078-.17c.128-.278.44-.383.717-.245a4.33 4.33 0 01.605.353c.22.153.525.101.684-.117l.033-.044c.162-.216.444-.291.683-.133l.03.02z"
                                                 fill="currentColor" />
@@ -127,8 +126,8 @@
                 @canany(['view-leads', 'create-lead', 'update-lead', 'delete-lead'])
                     <h2
                         class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                         <span>Marketing</span>
@@ -185,8 +184,8 @@
                 @canany(['view-students', 'create-student', 'update-student', 'delete-student'])
                     <h2
                         class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                         <span>Consulting</span>
@@ -242,8 +241,8 @@
                 @canany(['view-payments', 'create-payment', 'update-payment', 'delete-payment'])
                     <h2
                         class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                            stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <line x1="5" y1="12" x2="19" y2="12"></line>
                         </svg>
                         <span>Payments</span>
@@ -299,20 +298,19 @@
 
                 <h2
                     class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                    <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                        stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg>
                     <span>USER INTERFACE</span>
                 </h2>
 
                 <li class="menu nav-item">
-                    <button type="button" class="nav-link group"
-                        :class="{ 'active': activeDropdown === 'components' }"
+                    <button type="button" class="nav-link group" :class="{ 'active': activeDropdown === 'components' }"
                         @click="activeDropdown === 'components' ? activeDropdown = null : activeDropdown = 'components'">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M8.42229 20.6181C10.1779 21.5395 11.0557 22.0001 12 22.0001V12.0001L2.63802 7.07275C2.62423 7.09491 2.6107 7.11727 2.5974 7.13986C2 8.15436 2 9.41678 2 11.9416V12.0586C2 14.5834 2 15.8459 2.5974 16.8604C3.19479 17.8749 4.27063 18.4395 6.42229 19.5686L8.42229 20.6181Z"
                                     fill="currentColor" />
@@ -382,8 +380,7 @@
                 </li>
 
                 <li class="menu nav-item">
-                    <button type="button" class="nav-link group"
-                        :class="{ 'active': activeDropdown === 'elements' }"
+                    <button type="button" class="nav-link group" :class="{ 'active': activeDropdown === 'elements' }"
                         @click="activeDropdown === 'elements' ? activeDropdown = null : activeDropdown = 'elements'">
                         <div class="flex items-center">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -468,8 +465,8 @@
                 <li class="menu nav-item">
                     <a href="charts.html" class="nav-link group">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5"
                                     d="M6.22209 4.60105C6.66665 4.304 7.13344 4.04636 7.6171 3.82976C8.98898 3.21539 9.67491 2.9082 10.5875 3.4994C11.5 4.09061 11.5 5.06041 11.5 7.00001V8.50001C11.5 10.3856 11.5 11.3284 12.0858 11.9142C12.6716 12.5 13.6144 12.5 15.5 12.5H17C18.9396 12.5 19.9094 12.5 20.5006 13.4125C21.0918 14.3251 20.7846 15.011 20.1702 16.3829C19.9536 16.8666 19.696 17.3334 19.399 17.7779C18.3551 19.3402 16.8714 20.5578 15.1355 21.2769C13.3996 21.9959 11.4895 22.184 9.64665 21.8175C7.80383 21.4509 6.11109 20.5461 4.78249 19.2175C3.45389 17.8889 2.5491 16.1962 2.18254 14.3534C1.81598 12.5105 2.00412 10.6004 2.72315 8.86451C3.44218 7.12861 4.65982 5.64492 6.22209 4.60105Z"
                                     fill="currentColor" />
@@ -486,8 +483,8 @@
                 <li class="menu nav-item">
                     <a href="widgets.html" class="nav-link group">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5"
                                     d="M13 15.4C13 13.3258 13 12.2887 13.659 11.6444C14.318 11 15.3787 11 17.5 11C19.6213 11 20.682 11 21.341 11.6444C22 12.2887 22 13.3258 22 15.4V17.6C22 19.6742 22 20.7113 21.341 21.3556C20.682 22 19.6213 22 17.5 22C15.3787 22 14.318 22 13.659 21.3556C13 20.7113 13 19.6742 13 17.6V15.4Z"
                                     fill="currentColor" />
@@ -510,8 +507,8 @@
                 <li class="menu nav-item">
                     <a href="font-icons.html" class="nav-link group">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5"
                                     d="M2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12Z"
                                     fill="currentColor" />
@@ -529,8 +526,8 @@
                 <li class="menu nav-item">
                     <a href="dragndrop.html" class="nav-link group">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5"
                                     d="M2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12Z"
                                     fill="currentColor" />
@@ -556,8 +553,8 @@
 
                 <h2
                     class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                    <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                        stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg>
                     <span>TABLES AND FORMS</span>
@@ -566,8 +563,8 @@
                 <li class="menu nav-item">
                     <a href="tables.html" class="nav-link group">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5"
                                     d="M12 22C7.28595 22 4.92893 22 3.46447 20.5355C2 19.0711 2 16.714 2 12C2 7.28595 2 4.92893 3.46447 3.46447C4.92893 2 7.28595 2 12 2C16.714 2 19.0711 2 20.5355 3.46447C22 4.92893 22 7.28595 22 12C22 16.714 22 19.0711 20.5355 20.5355C19.0711 22 16.714 22 12 22Z"
                                     fill="currentColor" />
@@ -588,12 +585,11 @@
                 </li>
 
                 <li class="menu nav-item">
-                    <button type="button" class="nav-link group"
-                        :class="{ 'active': activeDropdown==='datatables' }"
+                    <button type="button" class="nav-link group" :class="{ 'active': activeDropdown==='datatables' }"
                         @click="activeDropdown === 'datatables' ? activeDropdown = null : activeDropdown = 'datatables'">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path
                                     d="M4.97883 9.68508C2.99294 8.89073 2 8.49355 2 8C2 7.50645 2.99294 7.10927 4.97883 6.31492L7.7873 5.19153C9.77318 4.39718 10.7661 4 12 4C13.2339 4 14.2268 4.39718 16.2127 5.19153L19.0212 6.31492C21.0071 7.10927 22 7.50645 22 8C22 8.49355 21.0071 8.89073 19.0212 9.68508L16.2127 10.8085C14.2268 11.6028 13.2339 12 12 12C10.7661 12 9.77318 11.6028 7.7873 10.8085L4.97883 9.68508Z"
                                     fill="currentColor" />
@@ -665,12 +661,11 @@
                 </li>
 
                 <li class="menu nav-item">
-                    <button type="button" class="nav-link group"
-                        :class="{ 'active': activeDropdown === 'forms' }"
+                    <button type="button" class="nav-link group" :class="{ 'active': activeDropdown === 'forms' }"
                         @click="activeDropdown === 'forms' ? activeDropdown = null : activeDropdown = 'forms'">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path opacity="0.5"
                                     d="M3 10C3 6.22876 3 4.34315 4.17157 3.17157C5.34315 2 7.22876 2 11 2H13C16.7712 2 18.6569 2 19.8284 3.17157C21 4.34315 21 6.22876 21 10V14C21 17.7712 21 19.6569 19.8284 20.8284C18.6569 22 16.7712 22 13 22H11C7.22876 22 5.34315 22 4.17157 20.8284C3 19.6569 3 17.7712 3 14V10Z"
                                     fill="currentColor" />
@@ -747,8 +742,8 @@
 
                 <h2
                     class="-mx-4 mb-1 flex items-center bg-white-light/30 px-7 py-3 font-extrabold uppercase dark:bg-dark dark:bg-opacity-[0.08]">
-                    <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor"
-                        stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg class="hidden h-5 w-4 flex-none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"
+                        fill="none" stroke-linecap="round" stroke-linejoin="round">
                         <line x1="5" y1="12" x2="19" y2="12"></line>
                     </svg>
                     <span>SUPPORTS</span>
@@ -757,8 +752,8 @@
                 <li class="menu nav-item">
                     <a href="https://vristo.sbthemes.com/" target="_blank" class="nav-link group">
                         <div class="flex items-center">
-                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20"
-                                viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <svg class="shrink-0 group-hover:!text-primary" width="20" height="20" viewBox="0 0 24 24"
+                                fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path fill-rule="evenodd" clip-rule="evenodd"
                                     d="M4 4.69434V18.6943C4 20.3512 5.34315 21.6943 7 21.6943H17C18.6569 21.6943 20 20.3512 20 18.6943V8.69434C20 7.03748 18.6569 5.69434 17 5.69434H5C4.44772 5.69434 4 5.24662 4 4.69434ZM7.25 11.6943C7.25 11.2801 7.58579 10.9443 8 10.9443H16C16.4142 10.9443 16.75 11.2801 16.75 11.6943C16.75 12.1085 16.4142 12.4443 16 12.4443H8C7.58579 12.4443 7.25 12.1085 7.25 11.6943ZM7.25 15.1943C7.25 14.7801 7.58579 14.4443 8 14.4443H13.5C13.9142 14.4443 14.25 14.7801 14.25 15.1943C14.25 15.6085 13.9142 15.9443 13.5 15.9443H8C7.58579 15.9443 7.25 15.6085 7.25 15.1943Z"
                                     fill="currentColor" />

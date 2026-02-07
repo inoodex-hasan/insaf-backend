@@ -19,19 +19,17 @@
 
                 <div class="form-group">
                     <label>Name <span class="text-danger">*</span></label>
-                    <input type="text" name="name" class="form-input" value="{{ old('name', $country->name) }}"
-                        required>
+                    <input type="text" name="name" class="form-input" value="{{ old('name', $country->name) }}" required>
                 </div>
 
                 <div class="form-group">
-                    <label>Code</label>
+                    <label>Code (Optional)</label>
                     <input type="text" name="code" class="form-input" value="{{ old('code', $country->code) }}">
                 </div>
 
                 <div class="form-group">
-                    <label>Currency</label>
-                    <input type="text" name="currency" class="form-input"
-                        value="{{ old('currency', $country->currency) }}">
+                    <label>Currency (Optional)</label>
+                    <input type="text" name="currency" class="form-input" value="{{ old('currency', $country->currency) }}">
                 </div>
 
                 <div class="form-group">

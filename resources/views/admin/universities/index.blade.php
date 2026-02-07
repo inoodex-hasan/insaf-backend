@@ -29,29 +29,26 @@
                 @forelse($universities as $university)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $university->country->name ?? '-' }}</td>
-                        <td>{{ $university->name }}</td>
-                        <td>{{ $university->short_name }}</td>
-                        <td>{{ $university->email }}</td>
-                        <td>{{ $university->website }}</td>
+                        <td>{{ $university->country->name ?? 'N/A' }}</td>
+                        <td>{{ $university->name ?? 'N/A' }}</td>
+                        <td>{{ $university->short_name ?? 'N/A' }}</td>
+                        <td>{{ $university->email ?? 'N/A' }}</td>
+                        <td>{{ $university->website ?? 'N/A' }}</td>
                         <td>
-                            <span class="badge {{ $university->status ? 'badge-success' : 'badge-danger' }}">
+                            <span class="badge {{ $university->status ? 'bg-success' : 'bg-danger' }}">
                                 {{ $university->status ? 'Active' : 'Inactive' }}
                             </span>
                         </td>
-                        <td class="text-center">
-                            @can('update-university')
-                                <a href="{{ route('admin.universities.edit', $university->id) }}"
-                                    class="btn btn-sm btn-outline-primary">Edit</a>
-                            @endcan
-                            @can('delete-university')
-                                <form action="{{ route('admin.universities.destroy', $university->id) }}" method="POST"
-                                    class="inline-block" onsubmit="return confirm('Are you sure?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
-                                </form>
-                            @endcan
+                        <td class="flex items-center justify-center gap-2">
+                            <a href="{{ route('admin.universities.edit', $university->id) }}"
+                                class="btn btn-sm btn-outline-primary">Edit</a>
+
+                            <form action="{{ route('admin.universities.destroy', $university->id) }}" method="POST"
+                                class="inline-block" onsubmit="return confirm('Are you sure?')">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-sm btn-outline-danger">Delete</button>
+                            </form>
                         </td>
                     </tr>
                 @empty

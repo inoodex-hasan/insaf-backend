@@ -10,15 +10,12 @@ class UniversityController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('can:view-universities')->only(['index']);
-        $this->middleware('can:create-university')->only(['create', 'store']);
-        $this->middleware('can:update-university')->only(['edit', 'update']);
-        $this->middleware('can:delete-university')->only(['destroy']);
+        $this->middleware('can:edit-data');
     }
 
     public function index(Request $request)
     {
-        $this->authorize('view-universities');
+        $this->authorize('edit-data');
 
         $query = University::with('country');
 
@@ -33,7 +30,7 @@ class UniversityController extends Controller
 
     public function create()
     {
-        $this->authorize('create-university');
+        $this->authorize('edit-data');
 
         $countries = Country::where('status', 1)->orderBy('name')->get();
 
@@ -42,7 +39,7 @@ class UniversityController extends Controller
 
     public function store(Request $request)
     {
-        $this->authorize('create-university');
+        $this->authorize('edit-data');
 
         $validated = $this->validateUniversity($request);
 
@@ -55,7 +52,7 @@ class UniversityController extends Controller
 
     public function edit(University $university)
     {
-        $this->authorize('update-university');
+        $this->authorize('edit-data');
 
         $countries = Country::where('status', 1)->orderBy('name')->get();
 
@@ -64,7 +61,7 @@ class UniversityController extends Controller
 
     public function update(Request $request, University $university)
     {
-        $this->authorize('update-university');
+        $this->authorize('edit-data');
 
         $validated = $this->validateUniversity($request);
 
@@ -77,7 +74,7 @@ class UniversityController extends Controller
 
     public function destroy(University $university)
     {
-        $this->authorize('delete-university');
+        $this->authorize('edit-data');
 
         $university->delete();
 

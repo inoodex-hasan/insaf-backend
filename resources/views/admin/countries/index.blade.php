@@ -26,14 +26,14 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $country->name }}</td>
-                        <td>{{ $country->code }}</td>
-                        <td>{{ $country->currency }}</td>
+                        <td>{{ $country->code ?? 'N/A' }}</td>
+                        <td>{{ $country->currency ?? 'N/A' }}</td>
                         <td>
-                            <span class="badge {{ $country->status ? 'badge-success' : 'badge-danger' }}">
+                            <span class="badge {{ $country->status ? 'bg-success' : 'bg-danger' }}">
                                 {{ $country->status ? 'Active' : 'Inactive' }}
                             </span>
                         </td>
-                        <td class="text-center">
+                        <td class="flex items-center justify-center gap-2">
                             <a href="{{ route('admin.countries.edit', $country->id) }}"
                                 class="btn btn-sm btn-outline-primary">Edit</a>
 

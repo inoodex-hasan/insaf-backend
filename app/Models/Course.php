@@ -15,7 +15,6 @@ class Course extends Model
         'degree_level',
         'duration',
         'tuition_fee',
-        'intake',
         'status'
     ];
 
@@ -23,5 +22,11 @@ class Course extends Model
     {
         return $this->belongsTo(University::class);
     }
+
+    public function intakes()
+    {
+        return $this->hasMany(CourseIntake::class);
+    }
+
 }
 
